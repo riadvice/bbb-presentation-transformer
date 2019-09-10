@@ -1,5 +1,5 @@
 // bbb-presentation-transformer project main.go
-package main
+package bigbluebutton
 
 import (
 	"fmt"
@@ -19,12 +19,15 @@ func main() {
 	// create a new Importer instance
 	imp := gofpdi.NewImporter()
 
+	var bbb_pres = Presentation{width: 1920, height: 1080}
+
 	pdf := gofpdf.NewCustom(&gofpdf.InitType{
 		UnitStr: "pt",
-		Size:    gofpdf.SizeType{Wd: 1920, Ht: 1080},
+		Size:    gofpdf.SizeType{Wd: bbb_pres.width, Ht: bbb_pres.height},
 	})
 
 	tpl := imp.ImportPageFromStream(pdf, &rs, 1, "/MediaBox")
+
 	pageSizes := imp.GetPageSizes()
 	nrPages := len(imp.GetPageSizes())
 	fmt.Println("Pages =>", nrPages)

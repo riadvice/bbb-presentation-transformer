@@ -3,4 +3,4 @@
 /*
 bbb-pres-annotations document
 */
-package main
+package bigbluebutton
