@@ -19,7 +19,10 @@ func main() {
 	// create a new Importer instance
 	imp := gofpdi.NewImporter()
 
-	var bbb_pres = Presentation{width: 1920, height: 1080}
+	var reader = PDFReader{}
+	reader.readSize("default.pdf")
+
+	var bbb_pres = Presentation{width: reader.getPageWidth(), height: reader.getPageHeight()}
 
 	pdf := gofpdf.NewCustom(&gofpdf.InitType{
 		UnitStr: "pt",
